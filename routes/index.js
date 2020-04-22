@@ -11,9 +11,7 @@ router.get("/", (req, res) => {
     }
 });
 
-router.get("/cards", (req, res) => {
-    res.render("card", {prompt: "Who is burried somewhere?", hint: "Think about whose tomb it is."});
-});
+
 
 router.get("/hello", (req, res) => {
     const name = req.cookies.username
