@@ -1,16 +1,22 @@
 const express = require('express');
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}))
-
-var friends = [["Tom","Schneider"], ["Peter","Enis"]]
+app.use(cookieParser())
 
 app.set("view engine", "pug");
 
 app.get("/", (req, res) => {
-    res.render("index");
+    const name = req.cookies.username
+    if (name) {
+        res.render("index", {name});
+    }
+    else {
+        res.redirect("/hello");
+    }
 });
 
 app.get("/cards", (req, res) => {
@@ -18,14 +24,28 @@ app.get("/cards", (req, res) => {
 });
 
 app.get("/hello", (req, res) => {
-    res.render("hello");
+    const name = req.cookies.username
+    if (name) {
+        res.redirect("/");
+    } else {
+        res.render("hello");
+    }
 });
 
 app.post("/hello", (req, res) => {
-    res.render("hello", {name: req.body.username})
+    res.cookie("username", req.body.username)
+    res.redirect("/")
+});
+
+
+
+app.post("/goodbye", (req, res) => {
+    res.clearCookie("username")
+    res.redirect("/hello")
 });
 
 //random challenge
+var friends = [["Tom","Schneider"], ["Peter","Enis"]]
 app.get("/sandbox", (req, res) => {
     res.render("table", {friends: friends});
 });
