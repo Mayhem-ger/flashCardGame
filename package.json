@@ -1,8 +1,7 @@
 {
   "name": "flashcards",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
-  }
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayhem-ger/flashCardGame.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mayhem-ger/flashCardGame/issues"
+  },
+  "homepage": "https://github.com/Mayhem-ger/flashCardGame#readme",
+  "description": ""
 }
