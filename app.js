@@ -19,11 +19,6 @@ app.use((req,res,next) => {
     next();
 })
 
-
-
-
-
-
 app.get("/", (req, res) => {
     const name = req.cookies.username
     if (name) {
