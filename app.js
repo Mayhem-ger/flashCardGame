@@ -16,14 +16,12 @@ app.use(mainRoutes);
 app.use("/cards",cardRoutes)
 
 app.use((req,res,next) => {
-    console.log("hello")
     const err = new Error("Oh no! There is an error!");
     err.status = 500;
     next(err);
 })
 
 app.use((req,res,next) => {
-    console.log("world")
     next();
 })
 
